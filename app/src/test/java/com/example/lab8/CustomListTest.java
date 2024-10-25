@@ -24,4 +24,29 @@ public class CustomListTest {
         Assertions.assertEquals(list.getCount(), listSize + 1);
     }
 
+    @Test
+    public void hasCityTest() {
+        City city = new City("Estevan", "SK");
+        Assertions.assertFalse(list.hasCity(city));
+        list.addCity(city);
+        Assertions.assertTrue(list.hasCity(city));
+    }
+
+    @Test
+    public void deleteCityTest() {
+        City city = new City("Estevan", "SK");
+        list.addCity(city);
+        Assertions.assertTrue(list.hasCity(city));
+        list.deleteCity(city);
+        Assertions.assertFalse(list.hasCity(city));
+    }
+
+    @Test
+    public void countCitiesTest() {
+        Assertions.assertEquals(0, list.countCities());
+        list.addCity(new City("Estevan", "SK"));
+        list.addCity(new City("Regina", "SK"));
+        Assertions.assertEquals(2, list.countCities());
+    }
+
 }
